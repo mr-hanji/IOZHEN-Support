@@ -19,7 +19,7 @@ app.use("/api/tickets", ticketRoutes);
 
 connectDB();
 
-const PORT = config.port || 3000;
+const PORT = config.port || 3008;
 app.listen(PORT, () => {
    console.log(`Server running on port ${PORT}`);
 });

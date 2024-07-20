@@ -16,3 +16,13 @@ exports.createTicket = async (req, res) => {
       res.status(500).send({ message: "Internal server error" });
    }
 };
+
+exports.getAllTickets = async (req, res) => {
+   try {
+      const tickets = await Ticket.find();
+      res.status(200).send(tickets);
+   } catch (error) {
+      console.log(error);
+      res.status(500).send({ message: "Internal server error" });
+   }
+};

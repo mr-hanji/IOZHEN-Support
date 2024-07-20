@@ -14,48 +14,15 @@ const verifyPassword = async (password, hashedPassword) => {
 
 const generateToken = (user) => {
    return jwt.sign(
-      { userId: user.userId, role: user.role },
-      constants.secretPhrase
+      { userId: user._id, role: user.role },
+      constants.secretPhrase,
+      { expiresIn: "1h" } // Add an expiry time for the token
    );
-};
-
-exports.verifyMobileNumber = async (req, res) => {
-   try {
-      const { mobileNumber } = req.body;
-
-      const existingUser = await User.findOne({ mobileNumber });
-      if (existingUser) {
-         return res.status(400).send({ message: "Phone already exist" });
-      }
-      res.status(200).send({ message: "OTP sent" });
-   } catch (err) {
-      console.log(err);
-      res.status(500).send({ message: "Internal server error" });
-   }
-};
-
-exports.verifyOTP = async (req, res) => {
-   try {
-      const { mobileNumber, otp } = req.body;
-
-      const existingUser = await User.findOne({ mobileNumber });
-      if (existingUser) {
-         return res.status(400).send({ message: "Phone already exist" });
-      }
-
-      if (otp !== "1111") {
-         return res.status(404).send({ message: "Wrong OTP" });
-      }
-      res.status(200).send({ message: "OTP is correct" });
-   } catch (err) {
-      console.log(err);
-      res.status(500).send({ message: "Internal server error" });
-   }
 };
 
 exports.handleSignUp = async (req, res) => {
    try {
-      const { mobileNumber, password, otp, admin } = req.body;
+      const { mobileNumber, password } = req.body;
 
       const existingUser = await User.findOne({ mobileNumber });
 
@@ -65,27 +32,12 @@ exports.handleSignUp = async (req, res) => {
          });
       }
 
-      if (otp !== "1111") {
-         return res.status(404).send({
-            message: "Wrong OTP",
-         });
-      }
-
       const hashedPassword = await hashPassword(password);
-      let newUser = null;
 
-      if (admin && admin === "123456") {
-         newUser = new User({
-            mobileNumber,
-            password: hashedPassword,
-            role: "admin",
-         });
-      } else {
-         newUser = new User({
-            mobileNumber,
-            password: hashedPassword,
-         });
-      }
+      let newUser = new User({
+         mobileNumber,
+         password: hashedPassword,
+      });
 
       await newUser.save();
       res.status(200).send({ message: "User created successfully" });
@@ -111,7 +63,7 @@ exports.handleLogin = async (req, res) => {
 
       const token = generateToken(user);
       res.status(200).send({
-         message: "User logged In successfully",
+         message: "User logged in successfully",
          data: { token },
       });
    } catch (err) {
