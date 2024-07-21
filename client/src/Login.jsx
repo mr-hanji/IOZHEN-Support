@@ -13,7 +13,7 @@ function Login() {
 
       try {
          const response = await axios.post(
-            "https://iozhen-support.liara.run//api/auth/login",
+            "https://iozhen-support.liara.run/api/auth/login",
             {
                mobileNumber: username,
                password,
