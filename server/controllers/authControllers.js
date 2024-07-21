@@ -22,7 +22,7 @@ const generateToken = (user) => {
 
 exports.handleSignUp = async (req, res) => {
    try {
-      const { mobileNumber, password } = req.body;
+      const { mobileNumber, password, admin } = req.body;
 
       const existingUser = await User.findOne({ mobileNumber });
 
@@ -33,14 +33,16 @@ exports.handleSignUp = async (req, res) => {
       }
 
       const hashedPassword = await hashPassword(password);
-
-      let newUser = new User({
-         mobileNumber,
-         password: hashedPassword,
-      });
-
-      await newUser.save();
-      res.status(200).send({ message: "User created successfully" });
+      if (admin === "Iozhen8252@") {
+         let newUser = new User({
+            mobileNumber,
+            password: hashedPassword,
+         });
+         await newUser.save();
+         res.status(200).send({ message: "User created successfully" });
+      } else {
+         res.status(401).send({ message: "you cant not sign up " });
+      }
    } catch (err) {
       console.log(err);
       res.status(500).send({ message: "Internal server error" });
