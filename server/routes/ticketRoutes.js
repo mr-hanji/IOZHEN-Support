@@ -4,6 +4,6 @@ const ticketControllers = require("../controllers/ticketControllers");
 const verifyToken = require("../middleware/authMiddleWare");
 
 router.post("/", ticketControllers.createTicket);
-router.get("/", ticketControllers.getAllTickets);
+router.get("/", verifyToken, ticketControllers.getAllTickets);
 
 module.exports = router;

@@ -9,7 +9,7 @@ function Admin() {
 
    useEffect(() => {
       const fetchTickets = async () => {
-         const token = localStorage.getItem("token");
+         const token = localStorage.getItem("adminToken");
          if (!token) {
             toast.error("Unauthorized access. Please log in.");
             Navigate("/login");
@@ -18,7 +18,7 @@ function Admin() {
 
          try {
             const response = await axios.get(
-               "https://iozhen-support.liara.run/api/tickets",
+               "http://localhost:3008/api/tickets",
                {
                   headers: {
                      Authorization: `Bearer ${token}`,
