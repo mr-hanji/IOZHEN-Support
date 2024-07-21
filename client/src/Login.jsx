@@ -13,7 +13,7 @@ function Login() {
 
       try {
          const response = await axios.post(
-            "http://localhost:3008/api/auth/login",
+            "https://iozhen-support.liara.run/api/auth/login",
             {
                mobileNumber: username,
                password,
@@ -21,9 +21,6 @@ function Login() {
          );
          if (response.status === 200) {
             // Save the token or admin status
-            console.log("====================================");
-            console.log(response.data.data.token);
-            console.log("====================================");
             localStorage.setItem("adminToken", response.data.data.token);
             toast.success("Login successful!");
             navigate("/admin");

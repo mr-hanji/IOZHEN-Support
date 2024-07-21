@@ -18,7 +18,7 @@ function Admin() {
 
          try {
             const response = await axios.get(
-               "http://localhost:3008/api/tickets",
+               "https://iozhen-support.liara.run/api/tickets",
                {
                   headers: {
                      Authorization: `Bearer ${token}`,
