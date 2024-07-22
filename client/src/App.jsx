@@ -38,10 +38,10 @@ function App() {
             formData
          );
          if (response.status === 200 || response.status === 201) {
-            toast.success("Your ticket was sent successfully!");
+            toast.success("نظر شما با موفقیت ثبت شد");
          }
       } catch (error) {
-         toast.error("Error submitting the form, please try again.");
+         toast.error("مشکلی پیش آمده دوباره تلاش کنید");
       }
    };
 
@@ -52,113 +52,135 @@ function App() {
             <Route
                path="/"
                element={
-                  <div className="relative m-10 bg-white border border-4 rounded-lg shadow">
-                     <div className="flex items-start justify-between p-5 border-b rounded-t">
-                        <div className="flex items-center gap-[10px] justify-center">
-                           <img
-                              src="/logo.jpg"
-                              alt=""
-                              className="w-[80px] h-[80px]"
-                           />
-                           <h3 className="text-xl font-semibold">IOZHEN</h3>
-                        </div>
-                        <h3 className="text-center absolute left-[35%] text-[30px] top-[5%]">
-                           IOZHEN SUPPORT FORM
-                        </h3>
-                     </div>
-
-                     <div className="p-6 space-y-6">
-                        <form onSubmit={handleSubmit}>
-                           <div className="grid grid-cols-6 gap-6">
-                              <div className="col-span-6 sm:col-span-3">
-                                 <label
-                                    htmlFor="first-name"
-                                    className="block mb-2 text-sm font-medium text-gray-900"
-                                 >
-                                    First Name
-                                 </label>
-                                 <input
-                                    type="text"
-                                    name="first-name"
-                                    id="first-name"
-                                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                                    placeholder="Enter your First Name"
-                                    required
-                                    value={firstName}
-                                    onChange={(e) =>
-                                       setFirstName(e.target.value)
-                                    }
-                                 />
-                              </div>
-                              <div className="col-span-6 sm:col-span-3">
-                                 <label
-                                    htmlFor="last-name"
-                                    className="block mb-2 text-sm font-medium text-gray-900"
-                                 >
-                                    Last Name
-                                 </label>
-                                 <input
-                                    type="text"
-                                    name="last-name"
-                                    id="last-name"
-                                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                                    placeholder="Enter your Last Name"
-                                    required
-                                    value={lastName}
-                                    onChange={(e) =>
-                                       setLastName(e.target.value)
-                                    }
-                                 />
-                              </div>
-                              <div className="col-span-full">
-                                 <label
-                                    htmlFor="description"
-                                    className="block mb-2 text-sm font-medium text-gray-900"
-                                 >
-                                    Description
-                                 </label>
-                                 <textarea
-                                    id="description"
-                                    rows="6"
-                                    className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-sm focus:ring-cyan-600 focus:border-cyan-600"
-                                    placeholder="Details"
-                                    value={description}
-                                    onChange={(e) =>
-                                       setDescription(e.target.value)
-                                    }
-                                 ></textarea>
-                              </div>
-                              <div className="col-span-full">
-                                 <label className="block mb-2 text-sm font-medium text-gray-900">
-                                    Rating
-                                 </label>
-                                 <div className="flex gap-1">
-                                    {[1, 2, 3, 4, 5].map((star) => (
-                                       <button
-                                          type="button"
-                                          key={star}
-                                          className={`text-xl ${
-                                             rating >= star
-                                                ? "text-yellow-400"
-                                                : "text-gray-400"
-                                          }`}
-                                          onClick={() => handleRating(star)}
+                  <div className="flex items-center justify-center w-full lg:h-[100vh] bg-gray-100">
+                     <div className="p-[30px] lg:p-0 w-full h-auto sm:w-[1200px] sm:h-[600px] flex flex-col-reverse sm:flex-row shadow-lg bg-white items-center">
+                        <div
+                           className="lg:w-[70%]"
+                           style={{ direction: "rtl" }}
+                        >
+                           <div className="p-6 space-y-6">
+                              <h3 className="text-[30px] text-center font-[700] ">
+                                 فرم نظر سنجی شرکت آیوژن
+                              </h3>
+                              <form onSubmit={handleSubmit}>
+                                 <div className="grid grid-cols-6 gap-6">
+                                    <div className="col-span-6 sm:col-span-3">
+                                       <label
+                                          htmlFor="first-name"
+                                          className="block mb-2 text-sm font-medium text-gray-900"
                                        >
-                                          ★
-                                       </button>
-                                    ))}
+                                          نام
+                                       </label>
+                                       <input
+                                          type="text"
+                                          name="first-name"
+                                          id="first-name"
+                                          className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                                          placeholder="نام خود را وارد کنید"
+                                          required
+                                          value={firstName}
+                                          onChange={(e) =>
+                                             setFirstName(e.target.value)
+                                          }
+                                       />
+                                    </div>
+                                    <div className="col-span-6 sm:col-span-3">
+                                       <label
+                                          htmlFor="last-name"
+                                          className="block mb-2 text-sm font-medium text-gray-900"
+                                       >
+                                          نام خانوادگی
+                                       </label>
+                                       <input
+                                          type="text"
+                                          name="last-name"
+                                          id="last-name"
+                                          className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                                          placeholder="نام خانوادگی خود را وارد کنید"
+                                          required
+                                          value={lastName}
+                                          onChange={(e) =>
+                                             setLastName(e.target.value)
+                                          }
+                                       />
+                                    </div>
+                                    <div className="col-span-full">
+                                       <label
+                                          htmlFor="description"
+                                          className="block mb-2 text-sm font-medium text-gray-900"
+                                       >
+                                          توضیحات
+                                       </label>
+                                       <textarea
+                                          id="description"
+                                          rows="6"
+                                          className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-sm focus:ring-cyan-600 focus:border-cyan-600 max-h-[10vh]"
+                                          placeholder="جزئیات"
+                                          value={description}
+                                          onChange={(e) =>
+                                             setDescription(e.target.value)
+                                          }
+                                       ></textarea>
+                                    </div>
+                                    <div className="col-span-full">
+                                       <label className="block mb-2 text-sm font-medium text-center text-gray-900">
+                                          امتیاز
+                                       </label>
+                                       <div className="flex items-center justify-center w-full gap-1">
+                                          {[1, 2, 3, 4, 5].map((star) => (
+                                             <button
+                                                type="button"
+                                                key={star}
+                                                className={`text-xl ${
+                                                   rating >= star
+                                                      ? "text-yellow-400"
+                                                      : "text-gray-400"
+                                                }`}
+                                                onClick={() =>
+                                                   handleRating(star)
+                                                }
+                                             >
+                                                ★
+                                             </button>
+                                          ))}
+                                       </div>
+                                    </div>
                                  </div>
-                              </div>
+                                 <div className="flex items-center justify-center w-full p-4 border-t border-gray-200 rounded-b">
+                                    <button
+                                       className="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                                       type="submit"
+                                    >
+                                       ثبت همه
+                                    </button>
+                                 </div>
+                              </form>
                            </div>
-                           <div className="p-6 border-t border-gray-200 rounded-b">
-                              <button
-                                 className="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                                 type="submit"
-                              >
-                                 Save all
-                              </button>
-                           </div>
-                        </form>
+                        </div>
+                        <div className="w-full p-[10px] lg:p-0 lg:w-[30%] bg-[#4adce3] h-full flex items-center justify-center flex-col px-[30px]">
+                           <img
+                              src="/logo2.png"
+                              alt="logo"
+                              className="max-w-[150px]"
+                           />
+                           <h2 className="mt-2 mb-4 text-xl font-bold text-center">
+                              به مرکز پشتیبانی آیوژن خوش آمدید
+                           </h2>
+                           <h4 className="mb-2 text-lg font-semibold ">
+                              مشتری گرامی
+                           </h4>
+                           <p className="mb-2 text-base text-center ">
+                              از اینکه آیوژن را برای نیازهای خود انتخاب
+                              کرده‌اید، سپاسگزاریم. ما همواره در تلاشیم تا
+                              بهترین خدمات و پشتیبانی را به شما ارائه دهیم
+                           </p>
+                           <p className="mb-2 text-base text-center ">
+                              نظرات شما میتواند به پیشرفت کار ما کمک شایانی بکند
+                           </p>
+                           <p className="text-lg font-bold ">
+                              با احترام، تیم پشتیبانی آیوژن
+                           </p>
+                        </div>
                      </div>
                   </div>
                }

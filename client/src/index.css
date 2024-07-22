@@ -1,3 +1,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+   font-family: "iran-yekan";
+   src: url("../public/fonts/iran-yekan/iranyekanwebthin.woff");
+   font-weight: 300;
+}
+@font-face {
+   font-family: "iran-yekan";
+   src: url("../public/fonts/iran-yekan/iranyekanweblight.woff");
+   font-weight: 400;
+}
+@font-face {
+   font-family: "iran-yekan";
+   src: url("../public/fonts/iran-yekan/iranyekanwebregular.woff");
+   font-weight: 500;
+}
+@font-face {
+   font-family: "iran-yekan";
+   src: url("../public/fonts/iran-yekan/iranyekanwebmedium.woff");
+   font-weight: 600;
+}
+@font-face {
+   font-family: "iran-yekan";
+   src: url("../public/fonts/iran-yekan/iranyekanwebbold.woff");
+   font-weight: 700;
+}
+@font-face {
+   font-family: "iran-yekan";
+   src: url("../public/fonts/iran-yekan/iranyekanwebextrabold.woff");
+   font-weight: 900;
+}
+
+html {
+   font-family: "iran-yekan", sans-serif;
+   overflow-x: "hidden";
+}
