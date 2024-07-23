@@ -37,3 +37,11 @@ html {
    font-family: "iran-yekan", sans-serif;
    overflow-x: "hidden";
 }
+
+.description-cell {
+   max-width: 300px; /* Adjust as needed */
+   word-break: break-word;
+   white-space: pre-wrap; /* Ensures that line breaks are respected */
+   overflow: hidden;
+   text-overflow: ellipsis;
+}

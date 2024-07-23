@@ -1,9 +1,4 @@
-import {
-   BrowserRouter as Router,
-   Route,
-   Routes,
-   Navigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
@@ -39,6 +34,10 @@ function App() {
          );
          if (response.status === 200 || response.status === 201) {
             toast.success("نظر شما با موفقیت ثبت شد");
+            setFirstName("");
+            setLastName("");
+            setDescription("");
+            setRating(0);
          }
       } catch (error) {
          toast.error("مشکلی پیش آمده دوباره تلاش کنید");

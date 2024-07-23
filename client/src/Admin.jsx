@@ -46,25 +46,33 @@ function Admin() {
             <table className="min-w-full bg-white border border-gray-200">
                <thead>
                   <tr>
-                     <th className="px-4 py-2 border-b">First Name</th>
-                     <th className="px-4 py-2 border-b">Last Name</th>
-                     <th className="px-4 py-2 border-b">Description</th>
-                     <th className="px-4 py-2 border-b">Rating</th>
+                     <th className="px-4 py-2 text-center border-b">
+                        First Name
+                     </th>
+                     <th className="px-4 py-2 text-center border-b">
+                        Last Name
+                     </th>
+                     <th className="px-4 py-2 text-center border-b">
+                        Description
+                     </th>
+                     <th className="px-4 py-2 text-center border-b">Rating</th>
                   </tr>
                </thead>
                <tbody>
                   {tickets.map((ticket) => (
                      <tr key={ticket.id}>
-                        <td className="px-4 py-2 border-b">
+                        <td className="px-4 py-2 text-center border-b">
                            {ticket.firstName}
                         </td>
-                        <td className="px-4 py-2 border-b">
+                        <td className="px-4 py-2 text-center border-b">
                            {ticket.lastName}
                         </td>
-                        <td className="px-4 py-2 border-b">
+                        <td className="px-4 py-2 text-center border-b description-cell">
                            {ticket.description}
                         </td>
-                        <td className="px-4 py-2 border-b">{ticket.score}</td>
+                        <td className="px-4 py-2 text-center border-b">
+                           {ticket.score}
+                        </td>
                      </tr>
                   ))}
                </tbody>
